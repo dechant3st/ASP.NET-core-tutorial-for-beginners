@@ -1,0 +1,85 @@
+﻿@model EmployeeCreateViewModel
+
+@{ 
+    ViewBag.Title = "Create Employee";
+}
+
+    <form enctype="multipart/form-data" asp-controller="Home" asp-action="Create" method="post">
+        <nav class="panel mt-3 ml-6 mr-6">
+            <p class="panel-heading">
+                Create Employee
+            </p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" asp-for="Name" />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="Name" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" asp-for="Email" />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="Email" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <select class="input" asp-for="Department" asp-items="Html.GetEnumSelectList<Dept>()">
+                                        <option value="">Please select department</option>
+                                    </select>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-building"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="Department" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <button class="button is-static"><i class="fa fa-photo"></i></button>
+                        </div>
+                        <div class="control">
+                            <div class="file is-right is-info is-fullwidth">
+                                <label class="file-label">
+                                    <input class="file-input" asp-for="Photo">
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fa fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                        </span>
+                                    </span>
+                                    <span class="file-name">
+                                        Choose your photo...
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-block">
+                <button class="button is-link is-outlined is-fullwidth">
+                    Submit
+                </button>
+            </div>
+        </nav>
+    </form>

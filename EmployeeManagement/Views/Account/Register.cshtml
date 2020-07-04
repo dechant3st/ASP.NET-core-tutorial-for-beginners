@@ -1,0 +1,58 @@
+﻿@model RegisterViewModel
+
+
+    <form asp-controller="account" asp-action="register" method="post">
+        <nav class="panel mt-3 ml-6 mr-6">
+            <p class="panel-heading">
+                Register Account
+            </p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" asp-for="Email" />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="Email" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" asp-for="Password" />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="Password" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input class="input" asp-for="ConfirmPassword" />
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </p>
+                                <span asp-validation-for="ConfirmPassword" class="is-danger help"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-block">
+                <button type="submit" class="button is-link is-outlined is-fullwidth">
+                    Register
+                </button>
+            </div>
+        </nav>
+    </form>

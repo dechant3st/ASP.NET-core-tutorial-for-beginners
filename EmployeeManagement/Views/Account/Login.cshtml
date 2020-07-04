@@ -1,0 +1,42 @@
+﻿@model LoginViewModel
+
+@{ 
+    ViewBag.PageTitle = "User Login";
+}
+    <section class="hero is-medium is-light is-bold is-fullheight-with-navbar">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-narrow">
+                        <form method="post" asp-controller="account" asp-action="login">
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input asp-for="Email" class="input is-medium">
+                                    <span class="icon is-medium is-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input asp-for="Password" class="input is-medium">
+                                    <span class="icon is-medium is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="field">
+                                <label class="checkbox" asp-for="RememberMe">
+                                    <input asp-for="RememberMe">
+                                    @Html.DisplayNameFor(m => m.RememberMe)
+                                </label>
+                            </div>
+                            <div class="field">
+                                <button class="button is-info is-fullwidth">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

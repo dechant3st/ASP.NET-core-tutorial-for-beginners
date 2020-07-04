@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <div class="tile is-parent" style="flex-wrap: wrap;">
+                @foreach (var employee in Model)
+                {
+                    var photoPath = "~/Images/" + (employee.PhotoPath ?? "noimg.png");
+                    <div class="tile is-child is-4">
+                        <div class="card mb-1 ml-1">
+                            <header class="card-header">
+                                <p class="card-header-title">@employee.Name</p>
+                            </header>
+                            <div class="card-image">
+                                <div class="columns is-mobile is-centered mt-1 mb-1">
+                                    <div class="column is-narrow">
+                                        <figure class="image is-128x128 is-center">
+                                            <img class="is-rounded" src="@photoPath" asp-append-version="true" />
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-controller="home" 
+                                   asp-action="details" 
+                                   asp-route-id="@employee.Id" class="card-footer-item">
+                                    View
+                                </a>
+                                <a asp-controller="home"
+                                   asp-action="edit"
+                                   asp-route-id="@employee.Id" class="card-footer-item">
+                                    Edit
+                                </a>
+                                <a href="#" class="card-footer-item">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

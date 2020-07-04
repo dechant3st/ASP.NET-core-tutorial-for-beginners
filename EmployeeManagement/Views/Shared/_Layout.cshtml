@@ -1,0 +1,78 @@
+﻿@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <environment include="Development">
+        <link href="~/lib/bulma/css/bulma.css" rel="stylesheet" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css"
+              rel="stylesheet"
+              integrity="sha512-ADrqa2PY1TZtb/MoLZIZu/Z/LlPaWQeDMBV73EMwjGam43/JJ5fqW38Rq8LJOVGCDfrJeOMS3Q/wRUVzW5DkjQ=="
+              asp-fallback-href="~/lib/bulma/css/bulma.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+              rel="stylesheet"
+              integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+              asp-fallback-href="~/lib/font-awesome/css/font-awesome.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true" />
+    </environment>
+</head>
+<body class="has-navbar-fixed-top">
+    <div class="container is-fullhd">
+        <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand ml-1">
+                <a class="navbar-item has-text-link" asp-controller="home" asp-action="index">
+                    <i class="fa fa-2x fa-facebook-square"></i> EMS
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu mr-1" id="navMenu">
+                <div class="navbar-start">
+                    <a asp-controller="home" asp-action="index" class="navbar-item">List</a>
+                    <a asp-controller="home" asp-action="create" class="navbar-item">Create</a>
+                </div>
+                <div class="navbar-end">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <div class="navbar-item">
+                            <form method="post" asp-controller="account" asp-action="logout">
+                                <button class="button is-danger is-outlined">Logout</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <a asp-controller="account" asp-action="register" class="navbar-item">Register</a>
+                        <div class="navbar-item">
+                            <a asp-controller="account" asp-action="login" class="button is-info is-outlined">
+                                Login
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </nav>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

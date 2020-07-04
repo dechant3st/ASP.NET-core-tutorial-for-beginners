@@ -1,0 +1,56 @@
+﻿
+@model HomeDetailsViewModel
+
+@{
+    ViewBag.Title = Model.PageTitle;
+    var photoPath = "~/Images/" + (Model.Employee.PhotoPath ?? "noimg.png");
+}
+
+
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column"></div>
+                    <div class="column is-two-fifths">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">@Model.Employee.Name</p>
+                            </header>
+                            <div class="card-image">
+                                <div class="columns is-mobile is-centered mt-1">
+                                    <div class="column is-narrow">
+                                        <figure class="image is-128x128 is-center">
+                                            <img class="is-rounded" src="@photoPath" asp-append-version="true" />
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-6">Email</p>
+                                <p class="subtitle is-6">@Model.Employee.Email</p>
+                                <p class="title is-6">Deparment</p>
+                                <p class="subtitle is-6">@Model.Employee.Department</p>
+                            </div>
+                            <div class="card-footer">
+                                <a asp-controller="home" 
+                                   asp-action="index" class="card-footer-item">
+                                    Back
+                                </a>
+                                <a asp-controller="home" 
+                                   asp-action="edit" 
+                                   asp-route-id="@Model.Employee.Id"  class="card-footer-item">
+                                    Edit
+                                </a>
+                                <a href="#" class="card-footer-item">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
